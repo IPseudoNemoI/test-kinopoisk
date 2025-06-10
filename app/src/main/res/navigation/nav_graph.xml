@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/filmListFragment">
+
+    <fragment
+        android:id="@+id/filmListFragment"
+        android:name="dev.pseudo.testkinopoisk.presentation.ui.FilmListFragment">
+        <action
+            android:id="@+id/action_filmListFragment_to_filmInfoFragment"
+            app:destination="@id/filmInfoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/filmInfoFragment"
+        android:name="dev.pseudo.testkinopoisk.presentation.ui.FilmInfoFragment" />
+</navigation>
