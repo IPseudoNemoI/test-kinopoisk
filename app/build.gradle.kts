@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
+    id("androidx.navigation.safeargs.kotlin")
 }
+
 
 android {
     namespace = "dev.pseudo.testkinopoisk"
