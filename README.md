@@ -13,11 +13,8 @@ An Android application for browsing a list of movies with genre-based filtering 
 
 ## Screenshots
 
-### Main Screen
-<img src="screenshots/1.png" alt="Main Screen" width="300"/>
-
-### Genre Filter
-<img src="screenshots/2.png" alt="Genre Filter" width="300"/>
+### Main Screen & Genre Filter
+<img src="screenshots/1.png" alt="Main Screen" width="300"/> <img src="screenshots/2.png" alt="Genre Filter" width="300"/>
 
 ### Info Screen
 <img src="screenshots/3.png" alt="Info Screen" width="300"/>
