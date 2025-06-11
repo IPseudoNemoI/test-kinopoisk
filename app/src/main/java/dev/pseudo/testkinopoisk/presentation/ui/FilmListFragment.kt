@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import dev.pseudo.testkinopoisk.databinding.FragmentFilmListBinding
 import dev.pseudo.testkinopoisk.presentation.adapter.FilmAdapter
 import dev.pseudo.testkinopoisk.presentation.adapter.GenreAdapter
@@ -46,7 +46,7 @@ class FilmListFragment : Fragment() {
 
         binding.rvGenres.apply {
             adapter = genreAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(requireContext())
         }
 
         binding.rvFilm.apply {
@@ -67,14 +67,25 @@ class FilmListFragment : Fragment() {
             genreAdapter.submitList(it)
         }
 
-        viewModel.loading.observe(viewLifecycleOwner) {
-            binding.pbLoading.isVisible = it
+        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+            binding.pbLoading.isVisible = isLoading
+            binding.llContent.isVisible = !isLoading
         }
 
-        viewModel.error.observe(viewLifecycleOwner) {
-            binding.tvError.apply {
-                isVisible = it != null
-                text = it
+        viewModel.error.observe(viewLifecycleOwner) { errorMsg ->
+            val hasError = !errorMsg.isNullOrEmpty()
+
+            binding.tvGenres.isVisible = !hasError
+            binding.rvGenres.isVisible = !hasError
+            binding.tvMovies.isVisible = !hasError
+            binding.rvFilm.isVisible = !hasError
+
+            if (hasError) {
+                Snackbar.make(binding.root, errorMsg!!, Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Повторить") {
+                        viewModel.loadFilms()
+                    }
+                    .show()
             }
         }
     }

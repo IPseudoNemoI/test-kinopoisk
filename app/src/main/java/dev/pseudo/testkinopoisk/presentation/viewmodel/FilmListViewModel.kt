@@ -44,7 +44,7 @@ class FilmListViewModel(
 
                 _loading.value = false
             } catch (e: Exception) {
-                _error.value = "Ошибка загрузки: ${e.message}"
+                _error.value = "Ошибка подключения сети"
                 _loading.value = false
             }
         }

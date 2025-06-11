@@ -26,14 +26,7 @@ class GenreAdapter(
             val isSelected = genre == selectedGenre
 
             binding.tvGenre.apply {
-                text = genre
-                setTypeface(null, if (isSelected) Typeface.BOLD else Typeface.NORMAL)
-                setTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        if (isSelected) R.color.purple else android.R.color.black
-                    )
-                )
+                text = genre.replaceFirstChar { it.uppercaseChar()}
                 setBackgroundResource(
                     if (isSelected) R.drawable.bg_selected_genre else R.drawable.bg_unselected_genre
                 )

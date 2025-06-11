@@ -1,11 +1,15 @@
 package dev.pseudo.testkinopoisk.presentation.adapter
 
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import dev.pseudo.testkinopoisk.R
 import dev.pseudo.testkinopoisk.databinding.ItemFilmBinding
 import dev.pseudo.testkinopoisk.domain.model.Film
 
@@ -18,14 +22,20 @@ class FilmAdapter(
         fun bind(film: Film) {
             binding.tvTitle.text = film.localizedName
             Glide.with(binding.ivPoster.context)
-                .load(film.imageUrl)
-                .centerCrop()
+                .load(film.imageUrl ?: R.drawable.bg_film_image)
+                .transform(CenterCrop(), RoundedCorners(dpToPx(4)))
+                .placeholder(R.drawable.bg_film_image)
+                .error(R.drawable.bg_film_image)
                 .into(binding.ivPoster)
 
             binding.root.setOnClickListener {
                 onClick(film)
             }
         }
+    }
+
+    fun dpToPx(dp: Int): Int {
+        return (dp * Resources.getSystem().displayMetrics.density).toInt()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
