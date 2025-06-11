@@ -1,9 +1,7 @@
 package dev.pseudo.testkinopoisk.presentation.adapter
 
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import dev.pseudo.testkinopoisk.R
 import dev.pseudo.testkinopoisk.databinding.ItemGenreBinding
@@ -26,7 +24,7 @@ class GenreAdapter(
             val isSelected = genre == selectedGenre
 
             binding.tvGenre.apply {
-                text = genre.replaceFirstChar { it.uppercaseChar()}
+                text = genre.replaceFirstChar { it.uppercaseChar() }
                 setBackgroundResource(
                     if (isSelected) R.drawable.bg_selected_genre else R.drawable.bg_unselected_genre
                 )

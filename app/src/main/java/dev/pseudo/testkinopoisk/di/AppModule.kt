@@ -3,6 +3,7 @@ package dev.pseudo.testkinopoisk.di
 import dev.pseudo.testkinopoisk.data.remote.FilmsApiService
 import dev.pseudo.testkinopoisk.data.repository.FilmRepositoryImpl
 import dev.pseudo.testkinopoisk.domain.repository.FilmRepository
+import dev.pseudo.testkinopoisk.presentation.viewmodel.FilmInfoViewModel
 import dev.pseudo.testkinopoisk.presentation.viewmodel.FilmListViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -21,5 +22,5 @@ val appModule = module {
     single<FilmRepository> { FilmRepositoryImpl(get()) }
 
     viewModel { FilmListViewModel(get()) }
-    //viewModel { FilmDetailViewModel() }
+    viewModel { FilmInfoViewModel(get()) }
 }
