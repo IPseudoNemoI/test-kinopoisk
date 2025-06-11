@@ -37,6 +37,12 @@ This app uses [Kinopoisk](https://s3-eu-west-1.amazonaws.com/sequeniatesttask/fi
 - Implemented single-select genre filter
 - Implemented display of the poster and the title of the film (maximum 2 lines with ellipsis)
 
+## Download APK
+
+You can download the working APK for testing:
+
+➡️ [Download testkinopoisk-debug.apk](./release/testkinopoisk-debug.apk)
+
 ## Authors
 Andrey Bashkov </br>
 [@GitHub](https://github.com/IPseudoNemoI) </br>
